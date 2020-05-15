@@ -1,7 +1,11 @@
 host: go.opentelemetry.io
 
 paths:
-  /otel:
+  /lib:
     repo: https://github.com/open-telemetry/opentelemetry-go
   /collector:
     repo: https://github.com/open-telemetry/opentelemetry-collector
+  /contrib/lib:
+    repo: https://github.com/open-telemetry/opentelemetry-go-contrib
+  /contrib/collector:
+    repo: https://github.com/open-telemetry/opentelemetry-collector-contrib

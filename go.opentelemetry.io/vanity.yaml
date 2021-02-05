@@ -7,3 +7,5 @@ paths:
     repo: https://github.com/open-telemetry/opentelemetry-collector
   /contrib:
     repo: https://github.com/open-telemetry/opentelemetry-go-contrib
+  /proto:
+    repo: https://github.com/open-telemetry/opentelemetry-proto-go

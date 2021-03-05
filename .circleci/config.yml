@@ -3,9 +3,6 @@ jobs:
   deploy:
     docker:
       - image: google/cloud-sdk
-    branches:
-      only:
-        - master
     steps:
       - run: |
           echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
@@ -13,5 +10,13 @@ jobs:
           gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
           cd go.opentelemetry.io
           chmod 755 deploy.sh
-          ./deploy.sh 
+          ./deploy.sh
 
+workflows:
+  deploy:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              only:
+                - master

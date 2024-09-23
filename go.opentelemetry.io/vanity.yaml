@@ -15,3 +15,5 @@ paths:
     repo: https://github.com/open-telemetry/opentelemetry-go-build-tools
   /auto:
     repo: https://github.com/open-telemetry/opentelemetry-go-instrumentation
+  /ebpf-profiler:
+    repo: https://github.com/open-telemetry/opentelemetry-ebpf-profiler

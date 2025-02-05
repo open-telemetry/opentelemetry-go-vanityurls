@@ -9,10 +9,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: google-github-actions/auth@v2
-        with:
-          credentials_json: $GCLOUD_SERVICE_KEY
-
       - uses: google-github-actions/setup-gcloud@v2
 
       - uses: actions/checkout@v4

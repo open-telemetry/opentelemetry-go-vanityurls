@@ -1,10 +1,18 @@
-version: 2.1
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
-  deploy:
-    docker:
-      - image: google/cloud-sdk
+  build:
+    runs-on: ubuntu-latest
     steps:
-      - checkout
+      - uses: google-github-actions/setup-gcloud@v2
+
+      - uses: actions/checkout@v4
+
       - run: |
           echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
           gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
@@ -12,12 +20,3 @@ jobs:
           cd go.opentelemetry.io
           chmod 755 deploy.sh
           ./deploy.sh
-
-workflows:
-  deploy:
-    jobs:
-      - deploy:
-          filters:
-            branches:
-              only:
-                - main

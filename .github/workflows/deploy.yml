@@ -1,0 +1,33 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@8254fb75a33b976a221574d287e93919e6a36f70 # v2.1.6
+        with:
+          credentials_json: ${{ secrets.GCLOUD_SERVICE_KEY }}
+          
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@f0990588f1e5b5af6827153b93673613abdc6ec7 # v2.1.1
+        
+      - name: Configure Google Cloud
+        run: |
+          gcloud --quiet config set project ${{ secrets.GOOGLE_PROJECT_ID }}
+          gcloud --quiet config set compute/zone ${{ secrets.GOOGLE_COMPUTE_ZONE }}
+          
+      - name: Deploy
+        run: |
+          cd go.opentelemetry.io
+          chmod 755 deploy.sh
+          ./deploy.sh

@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   deploy:
     docker:
-      - image: google/cloud-sdk@sha256:326a66ccf0018fbcb3fd7c6f9ee487826263e0c2be9658d6ec7c953c2549bfb0
+      - image: google/cloud-sdk@sha256:82b92acbfd878d55ac5ae757f6d84a70368d730ad2671030abf84377b8c5ad5c
     steps:
       - checkout
       - run: |

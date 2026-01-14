@@ -1,0 +1,6 @@
+{{ $packages := site.GetPage "section" "packages" }}
+<ul>
+{{ range $packages.Pages }}
+  <li><a href="/{{ .File.BaseFileName }}">go.opentelemetry.io/{{ .File.BaseFileName }}</a></li>
+{{ end }}
+</ul>

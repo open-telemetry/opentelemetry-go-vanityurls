@@ -1,0 +1,30 @@
+[build]
+publish = "public"
+command = "hugo --gc --minify"
+
+[build.environment]
+HUGO_VERSION = "0.150.1"
+
+#
+# Always serve files under /packages/* directly, no more rewrites
+#
+[[redirects]]
+from = "/packages/:name/*"
+to = "/packages/:name/"
+status = 200
+
+#
+# Redirect the package's root path
+#
+[[redirects]]
+from = "/:name"
+to = "/packages/:name/"
+status = 200 # ensure that the URL stays the same, see https://docs.netlify.com/routing/redirects/rewrites-proxies/
+
+#
+# Redirect every subpath within the package's root
+#
+[[redirects]]
+from = "/:name/*"
+to = "/packages/:name/"
+status = 200 # ensure that the URL stays the same, see https://docs.netlify.com/routing/redirects/rewrites-proxies/

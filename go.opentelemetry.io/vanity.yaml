@@ -19,3 +19,5 @@ paths:
     repo: https://github.com/open-telemetry/opentelemetry-ebpf-profiler
   /obi:
     repo: https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation
+  /otelc:
+    repo: https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation
